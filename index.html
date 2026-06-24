@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>กลุ่มสาระการเรียนรู้วิทยาศาสตร์ - โรงเรียน มอ.วิทยานุสรณ์</title>
+<link rel="icon" type="image/png" sizes="32x32" href="SCI DEP - logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<style>
+  :root {
+    --navy: #0F172A;
+    --yellow :#e8b331;
+    --navy-mid: #1E293B;
+    --navy-light: #334155;
+    --sky: #0EA5E9;
+    --sky-light: #38BDF8;
+    --mint: #10B981;
+    --mint-light: #34D399;
+    --white: #FFFFFF;
+    --gray-50: #F8FAFC;
+    --gray-100: #F1F5F9;
+    --gray-200: #E2E8F0;
+    --gray-400: #94A3B8;
+    --gray-600: #475569;
+    --text: #0F172A;
+    --text-muted: #64748B;
+    --bg: #FFFFFF;
+    --bg-section: #F8FAFC;
+    --card-bg: #FFFFFF;
+    --card-border: #E2E8F0;
+    --nav-bg: rgba(255,255,255,0.95);
+    --nav-text: #0F172A;
+    --shadow: 0 4px 24px rgba(15,23,42,0.08);
+    --shadow-lg: 0 12px 48px rgba(15,23,42,0.14);
+  }
+  [data-theme="dark"] {
+    --text: #F1F5F9;
+    --text-muted: #94A3B8;
+    --bg: #0F172A;
+    --bg-section: #1E293B;
+    --card-bg: #1E293B;
+    --card-border: #334155;
+    --nav-bg: rgba(15,23,42,0.97);
+    --nav-text: #F1F5F9;
+    --shadow: 0 4px 24px rgba(0,0,0,0.3);
+    --shadow-lg: 0 12px 48px rgba(0,0,0,0.4);
+    --gray-50: #1E293B;
+    --gray-100: #334155;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+
+  @font-face {
+    font-family: 'psu-stidti-bold';
+    src: url('fonts/psu-stidti-bold.woff2') format('woff2'),
+         url('fonts/psu-stidti-bold.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+  }
+  body {
+    font-family: 'psu-stidti-bold', 'Kanit', sans-serif; 
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:1000;
+    background: var(--nav-bg);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--card-border);
+    transition: background 0.3s;
+  }
+  .nav-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px; height: 78px;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none; color: var(--nav-text); cursor: pointer;
+  }
+  .nav-logo-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: white; }
+  .nav-logo-text { font-size: 18px; font-weight: 100; line-height: 1.3; }
+  .nav-logo-sub { font-size: 12px; font-weight: 400; color: var(--text-muted); }
+  .nav-menu { display: flex; gap: 4px; list-style: none; align-items: center; }
+  .nav-menu a {
+    text-decoration: none; color: var(--nav-text);
+    font-size: 16px; font-weight: 500;
+    padding: 8px 12px; border-radius: 8px; transition: all 0.2s;
+  }
+  .nav-menu a:hover { background: var(--gray-100); color: var(--sky); }
+  .nav-menu a.active { color: var(--sky); background: rgba(14,165,233,0.08); }
+  .nav-actions { display: flex; align-items: center; gap: 8px; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+  .mobile-menu { display: none; flex-direction: column; background: var(--nav-bg); border-top: 1px solid var(--card-border); padding: 12px 24px 20px; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { text-decoration: none; color: var(--text); font-size: 15px; font-weight: 500; padding: 12px 0; border-bottom: 1px solid var(--card-border); transition: color 0.2s; }
+  .mobile-menu a:hover { color: var(--sky); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--navy) 0%, #0F2744 40%, #0C1A3A 70%, #0A1628 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; position: relative; overflow: hidden; padding: 100px 24px 60px;
+  }
+  .hero-canvas { position: absolute; top:0; left:0; width:100%; height:100%; pointer-events: none; }
+  .hero-content { position: relative; z-index: 2; max-width: 800px; }
+  .hero-title { font-size: clamp(28px, 5vw, 52px); font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 12px; animation: fadeUp 0.8s 0.1s ease both; }
+  .hero-title span { color: var(--yellow); }
+  .hero-subtitle { font-size: clamp(16px, 2.5vw, 22px); color: rgba(255,255,255,0.8); font-weight: 400; margin-bottom: 40px; line-height: 1.6; animation: fadeUp 0.8s 0.2s ease both; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; animation: fadeUp 0.8s 0.3s ease both; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--sky), #0284C7);
+    color: white; border: none; padding: 14px 28px; border-radius: 12px;
+    font-size: 15px; font-weight: 600; font-family: 'Google Sans', sans-serif;
+    cursor: pointer; text-decoration: none; transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(14,165,233,0.4); display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(14,165,233,0.5); }
+  .btn-outline {
+    background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.4);
+    padding: 14px 28px; border-radius: 12px; font-size: 15px; font-weight: 600;
+    font-family: 'Google Sans', sans-serif; cursor: pointer; text-decoration: none;
+    transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
+
+  /* ─── STATS ─── */
+  .stats-strip { background: var(--navy-mid); border-top: 1px solid rgba(255,255,255,0.06); }
+  .stats-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); padding: 0 24px; }
+  .stat-item { padding: 32px 20px; text-align: center; border-right: 1px solid rgba(255,255,255,0.06); }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-size: 36px; font-weight: 800; color: var(--sky-light); line-height: 1; }
+  .stat-label { font-size: 14px; color: rgba(255,255,255,0.6); margin-top: 6px; }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 80px 24px; }
+  .section-inner { max-width: 1280px; margin: 0 auto; }
+  .section-header { text-align: center; margin-bottom: 56px; }
+  .section-eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--sky); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .section-eyebrow::before, .section-eyebrow::after { content:''; display:block; height:1px; width:24px; background: currentColor; opacity:0.5; }
+  .section-title { font-size: clamp(24px, 3vw, 36px); font-weight: 800; color: var(--text); margin-bottom: 14px; line-height: 1.2; }
+  .section-desc { font-size: 16px; color: var(--text-muted); max-width: 580px; margin: 0 auto; line-height: 1.7; }
+  .alt-bg { background: var(--bg-section); }
+
+  /* ─── CARDS ─── */
+  .cards-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+  .cards-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+  .cards-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
+
+  .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; overflow: hidden; transition: all 0.25s; box-shadow: var(--shadow); }
+  .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+  /* ─── TEACHER CARDS ─── */
+  .teacher-card {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 16px; padding: 24px; text-align: center;
+    transition: all 0.25s; box-shadow: var(--shadow);
+    cursor: pointer; position: relative; overflow: hidden;
+  }
+  .teacher-card::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(14,165,233,0.05), rgba(16,185,129,0.05));
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .teacher-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg), 0 0 0 2px rgba(14,165,233,0.2); }
+  .teacher-card:hover::after { opacity: 1; }
+  .teacher-card-arrow {
+    position: absolute; top: 14px; right: 14px;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(14,165,233,0.1); color: var(--sky);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; opacity: 0; transition: opacity 0.3s; z-index: 1;
+  }
+  .teacher-card:hover .teacher-card-arrow { opacity: 1; }
+  .teacher-avatar { width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 14px; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 800; color: white; }
+  .teacher-img {
+    width: 200px; height: 250px;  object-fit: cover; object-position: center; border-radius: 0%; margin: 0 auto 14px;
+    object-fit: cover; border: 0px solid var(--card-border);
+    transition: border-color 0.3s;
+  }
+  .teacher-card:hover .teacher-img { border-color: var(--yellow); }
+  .teacher-name { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .teacher-role { font-size: 12px; color: var(--sky); font-weight: 600; margin-bottom: 4px; }
+  .teacher-dept { font-size: 11px; color: var(--text-muted); margin-bottom: 10px; }
+
+  .teacher-room {
+    font-size: 12px; color: var(--text-muted);
+    display: flex; align-items: center; gap: 5px;
+    justify-content: center;
+    font-family: 'Google Sans', sans-serif;
+    margin-top: 4px;
+  }
+    .teacher-room i { color: var(--sky); font-size: 13px; }
+
+    /* ─── LAB CARDS ─── */
+    .lab-card { 
+    background: var(--card-bg); 
+    border: 1px solid var(--card-border); 
+    border-radius: 16px; 
+    overflow: hidden; 
+    transition: all 0.25s; 
+    box-shadow: var(--shadow); 
+    display: flex;
+    flex-direction: column;
+  }
+  .lab-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .lab-icon-header { padding: 28px 24px 20px; display: flex; align-items: flex-start; gap: 16px; }
+  .lab-icon { width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+  .lab-name { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .lab-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  .lab-equipment { padding: 0 24px 24px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .equip-tag { font-size: 11px; background: var(--gray-100); color: var(--text-muted); border-radius: 50px; padding: 4px 10px; font-weight: 500; }
+
+  /* ─── ACTION BUTTONS ─── */
+  .lab-actions { 
+    padding: 0 24px 24px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 8px; 
+    margin-top: auto; /* ดันปุ่มลงมาด้านล่างสุดของ Card */
+  }
+  .lab-btn { 
+    text-decoration: none; 
+    font-size: 0.85rem; 
+    padding: 10px; 
+    border-radius: 8px; 
+    text-align: center; 
+    font-weight: 600; 
+    transition: all 0.2s; 
+  }
+  .btn-borrow { background: rgba(14, 165, 233, 0.1); color: #0369a1; }
+  .btn-borrow:hover { background: rgba(14, 165, 233, 0.2); }
+
+  .btn-book-tool { background: rgba(16, 185, 129, 0.1); color: #15803d; }
+  .btn-book-tool:hover { background: rgba(16, 185, 129, 0.2); }
+
+  .btn-oven { background: rgba(245, 158, 11, 0.1); color: #b45309; }
+  .btn-oven:hover { background: rgba(245, 158, 11, 0.2); }
+
+  /* ─── SEARCH BAR ─── */
+  .search-bar { display: flex; gap: 12px; margin-bottom: 36px; flex-wrap: wrap; }
+  .search-input { flex: 1; min-width: 200px; padding: 12px 18px; border: 1.5px solid var(--card-border); border-radius: 12px; background: var(--card-bg); color: var(--text); font-size: 14px; font-family: 'Google Sans', sans-serif; transition: border-color 0.2s; outline: none; }
+  .search-input:focus { border-color: var(--sky); }
+  .filter-select { padding: 12px 18px; border: 1.5px solid var(--card-border); border-radius: 12px; background: var(--card-bg); color: var(--text); font-size: 14px; font-family: 'Google Sans', sans-serif; cursor: pointer; outline: none; transition: border-color 0.2s; }
+  .filter-select:focus { border-color: var(--sky); }
+
+  /* ─── VM GRID ─── */
+  .vm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .vm-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 32px 24px; text-align: center; box-shadow: var(--shadow); }
+  .vm-icon { font-size: 42px; margin-bottom: 18px; display: block; }
+  .vm-title { font-size: 18px; font-weight: 800; color: var(--text); margin-bottom: 12px; }
+  .vm-text { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+
+  /* ─── GALLERY ─── */
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .gallery-item { border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; background: var(--navy-mid); display: flex; align-items: center; justify-content: center; font-size: 40px; cursor: pointer; transition: transform 0.2s; }
+  .gallery-item:hover { transform: scale(1.02); }
+  .gallery-item.tall { grid-row: span 2; aspect-ratio: auto; min-height: 240px; }
+
+  /* ─── CONTACT (NEW 4-BLOCK STYLE) ─── */
+  .contact-blocks-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .contact-block {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 40px 24px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: all 0.25s;
+  }
+  .contact-block:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(14,165,233,0.3);
+  }
+  .contact-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    background: rgba(14,165,233,0.1);
+    color: var(--sky);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    transition: all 0.3s;
+  }
+  .contact-block:hover .contact-icon {
+    background: var(--sky);
+    color: white;
+    transform: scale(1.1);
+  }
+  .contact-heading {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .contact-text {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 0;
+  }
+  .contact-link {
+    font-size: 15px;
+    color: var(--sky);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  .contact-link:hover {
+    color: #0284C7;
+    text-decoration: underline;
+  }
+  .social-links { display: flex; gap: 14px; margin-top: 10px; }
+  .social-btn { width: 50px; height: 50px; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 22px; text-decoration: none; transition: .3s; }
+  .social-btn:hover { transform: translateY(-5px); }
+  .facebook { background: #1877F2; }
+  .youtube { background: #FF0000; }
+
+  /* ─── PAGE VIEWS ─── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  .page-hero-small { background: linear-gradient(135deg, var(--navy) 0%, #0F2744 100%); padding: 120px 24px 60px; text-align: center; }
+  .page-hero-small h1 { font-size: clamp(24px,4vw,40px); color: white; font-weight: 800; margin-bottom: 10px; }
+  .page-hero-small p { color: rgba(255,255,255,0.7); font-size: 16px; max-width: 500px; margin: 0 auto; }
+
+  .about-hero { background: linear-gradient(135deg, var(--navy) 0%, #0F2744 100%); padding: 120px 24px 80px; text-align: center; }
+  .about-hero h1 { font-size: clamp(28px, 4vw, 44px); color: white; font-weight: 800; margin-bottom: 14px; }
+  .about-hero p { font-size: 18px; color: rgba(255,255,255,0.75); max-width: 600px; margin: 0 auto; }
+
+  .smart-img { width: 100%; max-width: 1200px; height: auto; display: block; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-radius: 16px; transition: all 0.3s ease; }
+  .smart-img:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.25); }
+
+  /* ─── TEACHER PROFILE PAGE ─── */
+  .profile-hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #0F2744 100%);
+    padding: 100px 24px 0; position: relative; overflow: hidden;
+  }
+  .profile-hero-inner {
+    max-width: 960px; margin: 0 auto;
+    display: flex; align-items: flex-end; gap: 40px;
+    padding-bottom: 0;
+  }
+  .profile-photo-wrap {
+    flex-shrink: 0;
+    width: 200px; height: 250px;
+    border-radius: 0px; overflow: hidden;
+  }
+  .profile-photo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  .profile-info { padding-bottom: 56px; flex: 100;}
+  .profile-prefix { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 1px; }
+  .profile-name { font-size: clamp(22px, 4vw, 36px); font-weight: 800; color: white; margin-bottom: 8px; line-height: 1.1; }
+  .profile-position { font-size: 15px; color: var(--sky-light); font-weight: 600; margin-bottom: 4px; }
+  .profile-dept { font-size: 13px; color: var(--gray-50); margin-bottom: 16px; font-family: 'Google Sans', sans-serif;}
+  .profile-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .profile-tag {
+    font-size: 12px; padding: 5px 14px; border-radius: 50px;
+    background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8);
+    font-family: 'Google Sans', sans-serif; border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .profile-body { max-width: 960px; margin: 0 auto; padding: 60px 24px 80px; }
+  .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .profile-section-title {
+    font-size: 13px; font-weight: 700; color: var(--sky);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+    font-family: 'Google Sans', sans-serif;
+  }
+  .profile-section-title::after { content: ''; flex: 1; height: 1px; background: var(--card-border); }
+  .profile-info-card {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 16px; padding: 24px; box-shadow: var(--shadow);
+  }
+  .profile-info-row {
+    display: flex; gap: 14px; align-items: flex-start; padding: 10px 0;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .profile-info-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .profile-info-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(14,165,233,0.1); color: var(--sky); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; margin-top: 2px; }
+  .profile-info-label { font-size: 11px; color: var(--text-muted); margin-bottom: 3px; font-family: 'Google Sans', sans-serif; }
+  .profile-info-val { font-size: 14px; color: var(--text); font-weight: 500; line-height: 1.5; }
+
+  .edu-item { padding: 14px 0; border-bottom: 1px solid var(--card-border); }
+  .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .edu-year { font-size: 18px; font-weight: 700; color: var(--sky); margin-bottom: 4px; line-height: 1.1;}
+  .edu-degree { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+  .edu-country { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 4px; font-family: 'Google Sans', sans-serif; }
+
+  .specialize-item { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--card-border); }
+  .specialize-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .specialize-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sky); flex-shrink: 0; }
+  .specialize-text { font-size: 14px; color: var(--text); }
+
+  .profile-back-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 600; color: var(--sky);
+    background: rgba(14,165,233,0.08); border: 1px solid rgba(14,165,233,0.2);
+    border-radius: 10px; padding: 10px 18px;
+    cursor: pointer; transition: all 0.2s; margin-bottom: 32px;
+    font-family: 'Google Sans', sans-serif;
+  }
+  .profile-back-btn:hover { background: rgba(14,165,233,0.15); transform: translateX(-3px); }
+
+  /* ─── FOOTER ─── */
+  footer { background: var(--navy); color: rgba(255,255,255,0.8); padding: 60px 24px 30px; }
+  .footer-inner { max-width: 1280px; margin: 0 auto; }
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin-bottom: 24px; }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: rgba(255,255,255,0.4); flex-wrap: wrap; gap: 12px; }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fadeUp 0.6s ease both; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .cards-4 { grid-template-columns: repeat(2,1fr); }
+    .gallery-grid { grid-template-columns: repeat(2,1fr); }
+    .profile-grid { grid-template-columns: 1fr; }
+    .contact-blocks-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .nav-menu { display: none; }
+    .hamburger { display: flex; }
+    .stats-inner { grid-template-columns: repeat(2,1fr); }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .cards-3, .cards-2 { grid-template-columns: 1fr; }
+    .vm-grid { grid-template-columns: 1fr; }
+    .profile-hero-inner { 
+      flex-direction: row; 
+      align-items: flex-end; 
+      gap: 16px; 
+    }
+    .profile-photo-wrap { 
+      width: 200px; 
+      height: 250px; 
+      flex-shrink: 0; 
+      margin-bottom: 0; 
+    }
+    .profile-info { padding-bottom: 56px; }
+  }
+  @media (max-width: 540px) {
+    .cards-4 { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item.tall { aspect-ratio: 4/3; grid-row: span 1; }
+    .contact-blocks-4 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="showPage('home')">
+      <div class="nav-logo-icon"><img src="SCI DEP - logo.png" class="img-fluid" alt="" width="75" height="45"></div>
+      <div>
+        <div class="nav-logo-text">Department of Science</div>
+        <div class="nav-logo-sub">PSU. Wittayanusorn School</div>
+      </div>
+    </div>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#" onclick="showPage('home')" id="nav-home" class="active">หน้าแรก</a></li>
+      <li><a href="#" onclick="showPage('faculty')" id="nav-faculty">บุคลากร</a></li>
+      <li><a href="#" onclick="showPage('labs')" id="nav-labs">ห้องปฏิบัติการ</a></li>
+      <li><a href="#" onclick="showPage('contact')" id="nav-contact">ติดต่อเรา</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="hamburger" onclick="toggleMobile()" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#" onclick="showPage('home');closeMobile()">หน้าแรก</a>
+    <a href="#" onclick="showPage('faculty');closeMobile()">บุคลากร</a>
+    <a href="#" onclick="showPage('labs');closeMobile()">ห้องปฏิบัติการ</a>
+    <a href="#" onclick="showPage('contact');closeMobile()">ติดต่อเรา</a>
+  </div>
+</nav>
+
+<div class="page active" id="page-home">
+<section class="hero">
+  <canvas class="hero-canvas" id="heroCanvas"></canvas>
+  <div><p align="center"><img src="SCI DEP - logo.png" class="img-fluid" alt="" width="190" height="160"></p></div>
+  <div class="hero-content">
+    <h1 class="hero-title">กลุ่มสาระการเรียนรู้<br><span>วิทยาศาสตร์</span></h1>
+    <p class="hero-subtitle">Department of Science, PSU. Wittayanusorn School</p>
+    <div class="hero-cta">
+      <a href="#" class="btn-outline" onclick="showPage('labs')">ยืม-คืน/จองอุปกรณ์ โครงงาน</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num"><p style="color: #e8b331;">Sci Week 2026</p></div>
+      <div class="stat-label">COMING SOON</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="25">0</div>
+      <div class="stat-label">บุคลากร</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="4">0</div>
+      <div class="stat-label">สาขาวิชาทั้งหมด</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="8">0</div>
+      <div class="stat-label">ห้องปฏิบัติการ</div>
+    </div>
+  </div>
+</div>
+
+<section class="alt-bg">
+  <div class="section-header">
+    <div class="section-eyebrow">SCIENCE WEEK 2026</div>
+    <h2 class="section-title">สัปดาห์วิทยาศาสตร์ 2569</h2>
+    <p class="section-desc">พบกันเร็ว ๆ นี้</p>
+  </div>
+  <div class="text-center">
+    <img src="sciweek26.png" alt="Science Week 2026" class="img-fluid smart-img">
+  </div>
+</section>
+
+<section class="alt-bg">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">GALLERY</div>
+      <h2 class="section-title">ภาพกิจกรรม</h2>
+      <p class="section-desc">บรรยากาศการเรียนรู้และกิจกรรมวิทยาศาสตร์ของนักเรียน</p>
+      <p class="section-desc">Coming Soon</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item tall" style="background:linear-gradient(135deg,#0F2744,#1E3A5F);">🔬</div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#064E3B,#065F46);">🧪</div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#1E3A5F,#1E40AF);">⚗️</div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#3B1F6E,#5B21B6);">🔭</div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#7F1D1D,#991B1B);">🧬</div>
+    </div>
+  </div>
+</section>
+</div><div class="page" id="page-about">
+
+<div class="about-hero">
+  <h1>เกี่ยวกับเรา</h1>
+  <p>วิสัยทัศน์ พันธกิจ และเป้าหมายของกลุ่มสาระวิทยาศาสตร์</p>
+</div>
+
+<section>
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">VISION & MISSION</div>
+      <h2 class="section-title">วิสัยทัศน์และพันธกิจ</h2>
+    </div>
+    <div class="vm-grid">
+      <div class="vm-card">
+        <span class="vm-icon">🔭</span>
+        <h3 class="vm-title">วิสัยทัศน์</h3>
+        <p class="vm-text">กลุ่มสาระวิทยาศาสตร์มุ่งสร้างผู้เรียนที่มีความเป็นเลิศทางวิทยาศาสตร์ มีทักษะการคิดวิเคราะห์ สร้างสรรค์นวัตกรรม และพร้อมรับการเปลี่ยนแปลงในศตวรรษที่ 21</p>
+      </div>
+      <div class="vm-card">
+        <span class="vm-icon">🎯</span>
+        <h3 class="vm-title">พันธกิจ</h3>
+        <p class="vm-text">จัดการเรียนรู้ที่เน้นกระบวนการสืบเสาะหาความรู้ทางวิทยาศาสตร์ ส่งเสริมการทำโครงงาน วิจัย และเชื่อมโยงความรู้สู่การประยุกต์ใช้ในชีวิตจริง</p>
+      </div>
+      <div class="vm-card">
+        <span class="vm-icon">🏆</span>
+        <h3 class="vm-title">เป้าหมาย</h3>
+        <p class="vm-text">ผลิตนักเรียนที่มีความสามารถพิเศษด้านวิทยาศาสตร์ คณิตศาสตร์ และเทคโนโลยี สู่การศึกษาต่อในระดับอุดมศึกษาและเป็นนักวิทยาศาสตร์ที่มีคุณภาพ</p>
+      </div>
+    </div>
+  </div>
+</section>
+</div><div class="page" id="page-faculty">
+  <div class="page-hero-small">
+    <h1>บุคลากร</h1>
+  </div>
+  <section class="alt-bg">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-eyebrow">FACULTY</div>
+        <h2 class="section-title">บุคลากรของเรา</h2>
+        <p class="section-desc">ทีมผู้สอนผู้เชี่ยวชาญ</p>
+      </div>
+      <div class="search-bar">
+        <input class="search-input" type="text" id="teacherSearch" placeholder="🔍 ค้นหาชื่อครู..." oninput="filterTeachers(this.value, document.getElementById('teacherDeptFilter').value)">
+        <select class="filter-select" id="teacherDeptFilter" onchange="filterTeachers(document.getElementById('teacherSearch').value, this.value)">
+          <option value="">สาขาวิชาทั้งหมด</option>
+          <option value="ชีววิทยา">ชีววิทยา</option>
+          <option value="เคมี">เคมี</option>
+          <option value="ฟิสิกส์">ฟิสิกส์</option>
+          <option value="ห้องปฏิบัติการ">ห้องปฏิบัติการ</option>
+        </select>
+      </div>
+  
+      <p style="font-size:12px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:16px; font-family:'Google Sans',sans-serif;">ผู้บริหารกลุ่มสาระ</p>
+      <div class="cards-4" id="teacherGrid">
+  
+        <div class="teacher-card" data-dept="ฟิสิกส์" data-name="สุภารัตน์ ชูช่วย" onclick="showTeacherProfile('suparat')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="suparat.png" class="teacher-img" alt="สุภารัตน์ ชูช่วย" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#0EA5E9,#0284C7);display:none;">ส</div>
+          <div class="teacher-name">คุณครูสุภารัตน์ ชูช่วย</div>
+          <div class="teacher-role">หัวหน้ากลุ่มสาระฯ วิทยาศาสตร์</div>
+          <div class="teacher-dept">สาขาฟิสิกส์</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องพักครูวิทยาศาสตร์  </div>
+        </div>
+  
+        <div class="teacher-card" data-dept="เคมี" data-name="ฒามรา พรหมหอม" onclick="showTeacherProfile('tammara')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="tammara.png" class="teacher-img" alt="ฒามรา พรหมหอม" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#10B981,#059669);display:none;">ฒ</div>
+          <div class="teacher-name">คุณครูฒามรา พรหมหอม</div>
+          <div class="teacher-role">ที่ปรึกษาสาขาเคมี</div>
+          <div class="teacher-dept">ผู้ช่วยผู้อำนวยการฯ</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> สำนักงานผู้อำนวยการ </div>
+        </div>
+  
+        <div class="teacher-card" data-dept="ชีววิทยา" data-name="สุรวุฒิ แสงมณี" onclick="showTeacherProfile('surawut')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="surawut.png" class="teacher-img" alt="สุรวุฒิ แสงมณี" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#8B5CF6,#7C3AED);display:none;">ส</div>
+          <div class="teacher-name">คุณครูสุรวุฒิ แสงมณี</div>
+          <div class="teacher-role">ที่ปรึกษาสาขาชีววิทยา</div>
+          <div class="teacher-dept">หัวหน้าฝ่ายวิชาการ</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องหัวหน้าฝ่ายวิชาการ </div>
+        </div>
+  
+      </div><br>
+      <p style="font-size:12px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:16px; font-family:'Google Sans',sans-serif;">หัวหน้าสาขาวิชา</p>
+      <div class="cards-4" id="teacherGrid2">
+  
+        <div class="teacher-card" data-dept="ชีววิทยา" data-name="กฤตนัย พันยาง" onclick="showTeacherProfile('krittanai')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="krittanai.png" class="teacher-img" alt="กฤตนัย พันยาง" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#8B5CF6,#7C3AED);display:none;">ก</div>
+          <div class="teacher-name">คุณครูกฤตนัย พันยาง</div>
+          <div class="teacher-role">หัวหน้าสาขาชีววิทยา</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องพักครูวิทยาศาสตร์ </div>
+        </div>
+  
+        <div class="teacher-card" data-dept="ฟิสิกส์" data-name="กนกวรรณ เขียวเจริญ" onclick="showTeacherProfile('kanokwan')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="kanokwan.png" class="teacher-img" alt="กนกวรรณ เขียวเจริญ" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#0EA5E9,#0284C7);display:none;">ก</div>
+          <div class="teacher-name">คุณครูกนกวรรณ เขียวเจริญ</div>
+          <div class="teacher-role">หัวหน้าสาขาฟิสิกส์</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องพักครูวิทยาศาสตร์ </div>
+        </div>
+  
+        <div class="teacher-card" data-dept="เคมี" data-name="วิโรจน์ ประณิธานชัย" onclick="showTeacherProfile('wirote')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="wirote.png" class="teacher-img" alt="วิโรจน์ ประณิธานชัย" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#10B981,#059669);display:none;">ว</div>
+          <div class="teacher-name">คุณครูวิโรจน์ ประณิธานชัย</div>
+          <div class="teacher-role">หัวหน้าสาขาเคมี</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องพักครูวิทยาศาสตร์ </div>
+        </div>
+  
+        <div class="teacher-card" data-dept="ห้องปฏิบัติการ" data-name="อารีย์ อภัยรัตน์" onclick="showTeacherProfile('aree')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="aree.png" class="teacher-img" alt="อารีย์ อภัยรัตน์" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#F59E0B,#D97706);display:none;">อ</div>
+          <div class="teacher-name">คุณครูอารีย์ อภัยรัตน์</div>
+          <div class="teacher-role">หัวหน้างานห้องปฏิบัติการ</div>
+          <div class="teacher-dept">เจ้าหน้าที่ห้องปฏิบัติการเคมี</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องปฏิบัติการเคมี</div>
+        </div>
+  
+      </div><br>
+      <p style="font-size:12px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:16px; font-family:'Google Sans',sans-serif;">บุคลากรทั้งหมด</p>
+      <div class="cards-4" id="teacherGrid3">
+  
+        <div class="teacher-card" data-dept="เคมี" data-name="กุลธิดา คชรัตน์" onclick="showTeacherProfile('kultida')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="kultida.png" class="teacher-img" alt="กุลธิดา คชรัตน์" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#10B981,#059669);display:none;">ก</div>
+          <div class="teacher-name">คุณครูกุลธิดา คชรัตน์</div>
+          <div class="teacher-dept">สาขาเคมี</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องพักครูวิทยาศาสตร์ </div>
+        </div>
+  
+        <div class="teacher-card" data-dept="ชีววิทยา" data-name="นราวิชญ์ คำเล็ก" onclick="showTeacherProfile('narawich')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="narawich.png" class="teacher-img" alt="นราวิชญ์ คำเล็ก" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#8B5CF6,#7C3AED);display:none;">น</div>
+          <div class="teacher-name">คุณครูนราวิชญ์ คำเล็ก</div>
+          <div class="teacher-dept">สาขาชีววิทยา</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องพักครูวิทยาศาสตร์ </div>
+        </div>
+  
+        <div class="teacher-card" data-dept="เคมี" data-name="ชไมภรณ์ เฉลิมวรรณ" onclick="showTeacherProfile('chamaiporn')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="chamaiporn.png" class="teacher-img" alt="ชไมภรณ์ เฉลิมวรรณ" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#10B981,#059669);display:none;">ช</div>
+          <div class="teacher-name">คุณครูชไมภรณ์ เฉลิมวรรณ</div>
+          <div class="teacher-dept">สาขาเคมี</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> - </div>
+        </div>
+  
+        <div class="teacher-card" data-dept="ฟิสิกส์" data-name="จิรายุ แก้วสม" onclick="showTeacherProfile('jirayu')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="jirayu.png" class="teacher-img" alt="จิรายุ แก้วสม" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#0EA5E9,#0284C7);display:none;">จ</div>
+          <div class="teacher-name">คุณครูจิรายุ แก้วสม</div>
+          <div class="teacher-dept">สาขาฟิสิกส์</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องพักครูวิทยาศาสตร์ </div>
+        </div>
+  
+        <div class="teacher-card" data-dept="ฟิสิกส์" data-name="ปรียาภรณ์ เนื้อนุ้ย" onclick="showTeacherProfile('preeyaporn')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="preeyaporn.png" class="teacher-img" alt="ปรียาภรณ์ เนื้อนุ้ย" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#0EA5E9,#0284C7);display:none;">ป</div>
+          <div class="teacher-name">คุณครูปรียาภรณ์ เนื้อนุ้ย</div>
+          <div class="teacher-dept">สาขาฟิสิกส์</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องพักครูวิทยาศาสตร์ </div>
+        </div>
+  
+        <div class="teacher-card" data-dept="ฟิสิกส์" data-name="ไพลิน แช่ลิ้ม" onclick="showTeacherProfile('pailin')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="pailin.png" class="teacher-img" alt="ไพลิน แช่ลิ้ม" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#0EA5E9,#0284C7);display:none;">ไ</div>
+          <div class="teacher-name">คุณครูไพลิน แช่ลิ้ม</div>
+          <div class="teacher-dept">สาขาฟิสิกส์</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องพักครูวิทยาศาสตร์</div>
+        </div>
+  
+        <div class="teacher-card" data-dept="เคมี" data-name="ไพจิตรา อเปสริยาโย" onclick="showTeacherProfile('paichittra')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="paichittra.png" class="teacher-img" alt="ไพจิตรา อเปสริยาโย" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#10B981,#059669);display:none;">ไ</div>
+          <div class="teacher-name">คุณครูไพจิตรา อเปสริยาโย</div>
+          <div class="teacher-dept">สาขาเคมี</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องพักครูวิทยาศาสตร์ </div>
+        </div>
+  
+        <div class="teacher-card" data-dept="ชีววิทยา" data-name="วีรพงศ์ รักษ์แก้ว" onclick="showTeacherProfile('weerapong')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="weerapong.png" class="teacher-img" alt="วีรพงศ์ รักษ์แก้ว" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#8B5CF6,#7C3AED);display:none;">ว</div>
+          <div class="teacher-name">คุณครูวีรพงศ์ รักษ์แก้ว</div>
+          <div class="teacher-dept">สาขาชีววิทยา</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> สำนักงานผู้อำนวยการ</div>
+        </div>
+  
+        <div class="teacher-card" data-dept="ฟิสิกส์" data-name="สหรัฐ อินสุวรรณ์" onclick="showTeacherProfile('saharat')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="saharat.png" class="teacher-img" alt="สหรัฐ อินสุวรรณ์" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#0EA5E9,#0284C7);display:none;">ส</div>
+          <div class="teacher-name">คุณครูสหรัฐ อินสุวรรณ์</div>
+          <div class="teacher-dept">สาขาฟิสิกส์</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องพักครูวิทยาศาสตร์ </div>
+        </div>
+  
+        <div class="teacher-card" data-dept="เคมี" data-name="สุดารัตน์ ลักษณะ" onclick="showTeacherProfile('sudarat')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="sudarat.png" class="teacher-img" alt="สุดารัตน์ ลักษณะ" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#10B981,#059669);display:none;">ส</div>
+          <div class="teacher-name">คุณครูสุดารัตน์ ลักษณะ</div>
+          <div class="teacher-dept">สาขาเคมี</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องพักครูวิทยาศาสตร์ </div>
+        </div>
+  
+        <div class="teacher-card" data-dept="ชีววิทยา" data-name="อัจฉรา ตันติประภาส" onclick="showTeacherProfile('atchara')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="atchara.png" class="teacher-img" alt="อัจฉรา ตันติประภาส" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#8B5CF6,#7C3AED);display:none;">อ</div>
+          <div class="teacher-name">คุณครูอัจฉรา ตันติประภาส</div>
+          <div class="teacher-dept">สาขาชีววิทยา</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องพักครูวิทยาศาสตร์ </div>
+        </div>
+  
+        <div class="teacher-card" data-dept="ชีววิทยา" data-name="อภิญญา บุญคุ้ม" onclick="showTeacherProfile('apinya')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="apinya.png" class="teacher-img" alt="อภิญญา บุญคุ้ม" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#8B5CF6,#7C3AED);display:none;">อ</div>
+          <div class="teacher-name">คุณครูอภิญญา บุญคุ้ม</div>
+          <div class="teacher-dept">สาขาชีววิทยา</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องวิชาการ </div>
+        </div>
+  
+        <div class="teacher-card" data-dept="ชีววิทยา" data-name="อธิพงศ์ หนูนุ่น" onclick="showTeacherProfile('athipong')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="athipong.png" class="teacher-img" alt="อธิพงศ์ หนูนุ่น" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#8B5CF6,#7C3AED);display:none;">อ</div>
+          <div class="teacher-name">คุณครูอธิพงศ์ หนูนุ่น</div>
+          <div class="teacher-dept">สาขาชีววิทยา</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ศูนย์ทรัพยากรณ์การเรียนรู้ </div>
+        </div>
+  
+        <div class="teacher-card" data-dept="ฟิสิกส์" data-name="อดินันท์ เจ๊ะซู" onclick="showTeacherProfile('adinan')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="adinan.png" class="teacher-img" alt="อดินันท์ เจ๊ะซู" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#0EA5E9,#0284C7);display:none;">อ</div>
+          <div class="teacher-name">คุณครูอดินันท์ เจ๊ะซู</div>
+          <div class="teacher-dept">สาขาฟิสิกส์</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องปฏิบัติการ STEM </div>
+        </div>
+  
+        <div class="teacher-card" data-dept="ฟิสิกส์" data-name="อลิษา ทวีลาภ" onclick="showTeacherProfile('alisa')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="alisa.png" class="teacher-img" alt="อลิษา ทวีลาภ" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#0EA5E9,#0284C7);display:none;">อ</div>
+          <div class="teacher-name">คุณครูอลิษา ทวีลาภ</div>
+          <div class="teacher-dept">สาขาฟิสิกส์</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องพักครูวิทยาศาสตร์ </div>
+        </div>
+  
+        <div class="teacher-card" data-dept="ห้องปฏิบัติการ" data-name="นวพร พุทธกูล" onclick="showTeacherProfile('navaporn')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="navaporn.png" class="teacher-img" alt="นวพร พุทธกูล" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#F59E0B,#D97706);display:none;">น</div>
+          <div class="teacher-name">คุณครูนวพร พุทธกูล</div>
+          <div class="teacher-dept">เจ้าหน้าที่ห้องปฏิบัติการ</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องปฏิบัติการวิทยาศาสตร์ทั่วไป </div>
+        </div>
+  
+        <div class="teacher-card" data-dept="ห้องปฏิบัติการ" data-name="สุรศักดิ์ จันทร์โชติ" onclick="showTeacherProfile('surasak')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="surasak.png" class="teacher-img" alt="สุรศักดิ์ จันทร์โชติ" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#F59E0B,#D97706);display:none;">ส</div>
+          <div class="teacher-name">คุณครูสุรศักดิ์ จันทร์โชติ</div>
+          <div class="teacher-dept">เจ้าหน้าที่ห้องปฏิบัติการฟิสิกส์</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องปฏิบัติการฟิสิกส์ </div>
+        </div>
+  
+        <div class="teacher-card" data-dept="ห้องปฏิบัติการ" data-name="พัชรินทร์ สกุลจีน" onclick="showTeacherProfile('patcharin')">
+          <div class="teacher-card-arrow"><i class="bi bi-arrow-right"></i></div>
+          <img src="patcharin.png" class="teacher-img" alt="พัชรินทร์ สกุลจีน" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="teacher-avatar" style="background:linear-gradient(135deg,#F59E0B,#D97706);display:none;">พ</div>
+          <div class="teacher-name">คุณครูพัชรินทร์ สกุลจีน</div>
+          <div class="teacher-dept">เจ้าหน้าที่ห้องปฏิบัติการชีววิทยา</div>
+          <div class="teacher-room"><i class="bi bi-geo-alt-fill"></i> ห้องปฏิบัติการชีววิทยา </div>
+        </div>
+  
+      </div></div>
+  </section>
+</div><div class="page" id="page-labs">
+  <div class="page-hero-small">
+    <h1>ห้องปฏิบัติการ</h1>
+  </div>
+  <section>
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-eyebrow">LABORATORIES</div>
+        <h2 class="section-title">ห้องปฏิบัติการของเรา</h2>
+        <p class="section-desc">ห้องปฏิบัติการที่ทันสมัยครบครันสำหรับทุกสาขาวิทยาศาสตร์</p>
+      </div>
+      <div class="cards-3">
+        <div class="lab-card">
+          <div class="lab-icon-header">
+            <div class="lab-icon" style="background:rgba(14,165,233,0.12);color:#0EA5E9;">⚗️</div>
+            <div><div class="lab-name">ห้องปฏิบัติการเคมี</div><div class="lab-desc">ผู้ดูแล : คุณครูอารีย์ อภัยรัตน์</div></div>
+          </div>
+          <div class="lab-equipment"><span class="equip-tag">4201</span><span class="equip-tag">4203</span></div>
+          <div class="lab-actions">
+            <a href="https://forms.gle/YreKCSZaoyqyQkcz7" class="lab-btn btn-borrow">ยืม-คืน วัสดุอุปกรณ์และสารเคมี (นักเรียน)</a>
+            <a href="https://forms.gle/NpqyakSdtjMDNnre6" class="lab-btn btn-book-tool">จองใช้เครื่องมือสาขาเคมี</a>
+            <a href="https://forms.gle/5k8r9zifbN3FgQGs9" class="lab-btn btn-oven">จองใช้ตู้อบลมร้อน สาขาเคมี</a>
+          </div>
+        </div>
+        <div class="lab-card">
+          <div class="lab-icon-header">
+            <div class="lab-icon" style="background:rgba(16,185,129,0.12);color:#10B981;">🦠</div>
+            <div><div class="lab-name">ห้องปฏิบัติการชีววิทยา</div><div class="lab-desc">ผู้ดูแล : คุณครูพัชรินทร์ สกุลจีน</div></div>
+          </div>
+        <div class="lab-equipment"><span class="equip-tag">4301</span><span class="equip-tag">4303</span></div>      
+        <div class="lab-actions">
+            <a href="https://forms.gle/YreKCSZaoyqyQkcz7" class="lab-btn btn-borrow">ยืม-คืน วัสดุและอุปกรณ์ชีววิทยา (นักเรียน)</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf2sc56XHstyg-IwEL8X0IorzXTLAksNcoekZVFXmLuComquw/viewform" class="lab-btn btn-book-tool">จองใช้เครื่องมือชีววิทยา</a>
+            <a href="404" class="lab-btn btn-oven"> ⠀ ⠀ ⠀</a>
+          </div>
+        </div>  
+        <div class="lab-card">
+          <div class="lab-icon-header">
+            <div class="lab-icon" style="background:rgba(139,92,246,0.12);color:#8B5CF6;">⚡</div>
+            <div><div class="lab-name">ห้องปฏิบัติการฟิสิกส์</div><div class="lab-desc">ผู้ดูแล : คุณครูสุรศักดิ์ จันทร์โชติ</div></div>
+          </div>
+        <div class="lab-equipment"><span class="equip-tag">4404</span><span class="equip-tag">4407</span></div>
+        <div class="lab-actions">
+            <a href="https://forms.gle/YreKCSZaoyqyQkcz7" class="lab-btn btn-borrow">ยืม-คืน วัสดุและอุปกรณ์ฟิสิกส์ (นักเรียน)</a>
+            <a href="https://forms.gle/6xnxfGiMyyAmz8eg9" class="lab-btn btn-book-tool">จองใช้เครื่องมือฟิสิกส์</a>
+            <a href="https://forms.gle/vBQfJnaoz8FpLtfR9" class="lab-btn btn-oven">จองใช้ตู้อบลมร้อน สาขาฟิสิกส์</a>
+          </div>
+        </div>  
+        <div class="lab-card">
+          <div class="lab-icon-header">
+            <div class="lab-icon" style="background:rgba(245,158,11,0.12);color:#F59E0B;">🌍</div>
+            <div><div class="lab-name">ห้องวิทยาศาสตร์ทั่วไป</div><div class="lab-desc">ผู้ดูแล : คุณครูนวพร พุทธกูล</div></div>
+          </div>
+        <div class="lab-equipment"><span class="equip-tag">4401</span><span class="equip-tag">4403</span></div>
+                <div class="lab-actions">
+            <a href="https://forms.gle/YreKCSZaoyqyQkcz7" class="lab-btn btn-borrow">ยืม-คืน วัสดุอุปกรณ์วิทยาศาสตร์ (นักเรียน)</a>
+            <a href="https://forms.gle/QRejKdkV3UZVLtCv7" class="lab-btn btn-book-tool">จองใช้เครื่องมือ</a>
+            <a href="https://forms.gle/P3ogeaeMmAeM6NsA7" class="lab-btn btn-oven">จองใช้ตู้อบลมร้อน</a>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </section>
+</div><div class="page" id="page-teacher-profile">
+  <div id="profileContent"></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+  PAGE: CONTACT (UPDATED)
+══════════════════════════════════════════ -->
+<div class="page" id="page-contact">
+  <div class="page-hero-small">
+    <h1>ติดต่อเรา</h1>
+  </div>
+  
+  <section class="alt-bg">
+    <div class="section-inner" style="max-width: 800px;">
+      <div class="section-header">
+        <h2 class="section-title">กลุ่มสาระการเรียนรู้วิทยาศาสตร์</h2>
+        <p class="section-desc">โรงเรียน มอ.วิทยานุสรณ์</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+        
+        <div class="contact-block fade-in">
+          <div class="contact-icon"><i class="bi bi-geo-alt-fill"></i></div>
+          <h5 class="contact-heading">ติดต่อเรา</h5>
+          <p class="contact-text">กลุ่มสาระการเรียนรู้วิทยาศาสตร์<br> โรงเรียน มอ.วิทยานุสรณ์</p>
+        </div>
+        
+        <div class="contact-block fade-in" style="animation-delay: 0.1s;">
+          <div class="contact-icon"><i class="bi bi-facebook"></i></div>
+          <h5 class="contact-heading">Facebook Page</h5>
+          <p class="contact-text">ติดตามกิจกรรมข่าวสาร</p>
+          <a href="https://www.facebook.com/PSUWitScienceDepartment/" target="_blank" class="contact-link" style="margin-top: 10px; display: block;">ไปที่เพจ</a>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+</div>
+
+</div><footer>
+  <div class="footer-inner">
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <span>© 2026 Department of Science PSU.WIT</span>
+      <span>SCI</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ═══════════════════════════════════════
+//  TEACHER DATA
+// ═══════════════════════════════════════
+const teachers = {
+  suparat: {
+    prefix: 'คุณครู',
+    name: 'สุภารัตน์ ชูช่วย',
+    nameEn: 'Suparat Chuchuay',
+    position: 'หัวหน้ากลุ่มสาระการเรียนรู้วิทยาศาสตร์',
+    dept: ['รองหัวหน้างาน ฝ่ายพัฒนาบุคลิกภาพผู้เรียนและปกครองสายชั้น ม.ปลาย','รองประธาน โครงการความร่วมมือในการจัดการเรียนการสอนทางไกลแบบสื่อสารสองทาง'],
+    room: 'ห้องพักครูวิทยาศาสตร์',
+    email: 'suparat@psuwit.ac.th',
+    phone: '-',
+    img: 'suparat.png',
+    color: 'linear-gradient(135deg,#0EA5E9,#0284C7)',
+    initial: 'ส',
+    education: [
+      { year: 'การศึกษาบัณฑิต (วิทยาศาสตร์-ฟิสิกส์) กศ.บ.', degree: 'มหาวิทยาลัยทักษิณ', country: 'ไทย' }
+    ],
+    specialize: ['สาขาฟิสิกส์', ]
+  },
+  tammara: {
+    prefix: 'คุณครู',
+    name: 'ฒามรา พรหมหอม',
+    nameEn: 'Tammara Promhom',
+    position: 'ที่ปรึกษาสาขาเคมี',
+    dept: ['ผู้ช่วยผู้อำนวยการด้านพัฒนาวิชาการครู'], 
+    room: 'สำนักงานผุ้อำนวยการ',
+    email: 'tammara@psuwit.ac.th',
+    phone: '-',
+    img: 'tammara.png',
+    color: 'linear-gradient(135deg,#10B981,#059669)',
+    initial: 'ฒ',
+    education: [
+      { year: 'วิทยาศาสตรบัณฑิต (เคมี) วท.บ.', degree: 'มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' },
+      { year: 'วิทยาศาสตรบัณฑิต วท.ม.', degree: 'มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' },
+      { year: 'การศึกษามหาบัณฑิต (การบริหารการศึกษา) กศ.ม.', degree: 'มหาวิทยาลัยทักษิณ', country: 'ไทย' }
+    ],
+    specialize: ['สาขาเคมี']
+  },
+  
+  surawut: {
+    prefix: 'คุณครู',
+    name: 'สุรวุฒิ แสงมณี',
+    nameEn: 'Surawut Sangmanee',
+    position: 'ที่ปรึกษาสาขาชีววิทยา',
+    dept: ['หัวหน้าฝ่ายวิชาการ','รักษาการหัวหน้ากลุ่มสาระฯ ศิลปะ', 'ประธาน โครงการจัดการเรียนการสอนห้องเรียน STEM AI', 'รองประธาน โครงการจัดการเรียนการสอนห้องเรียนนวัตกรรมดิจิทัล', 'รองประธาน โครงการความร่วมมือในการจัดการเรียนการสอนทางไกลแบบสื่อสารสองทาง', 'ผู้จัดการฝ่ายกิจการนักเรียนประจำ งานหอพัก'],
+    room: 'ห้องพักหัวหน้าฝ่ายวิชาการ',
+    email: 'surawut@psuwit.ac.th',
+    phone: '-',
+    img: 'surawut.png',
+    color: 'linear-gradient(135deg,#8B5CF6,#7C3AED)',
+    initial: 'ส',
+    education: [
+      { year: 'วิทยาศาสตรบัณฑิต (ชีววิทยา) วท.บ.', degree: 'มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' },
+      { year: 'การศึกษามหาบัณฑิต (การบริหารการศึกษา) กศ.ม.', degree: 'มหาวิทยาลัยทักษิณ', country: 'ไทย' }
+    ],
+    specialize: ['ชีววิทยา']
+  },
+  pailin: {
+    prefix: 'คุณครู',
+    name: 'ไพลิน แช่ลิ้ม',
+    nameEn: 'Pailin Chailim',
+    position: 'ครูฟิสิกส์',
+    dept: ['ครูประจำชั้น ม.5/4','หัวหน้าสายชั้นมัธยมศึกษาปีที่ 5','ผู้ปฏิบัติงาน งานทะเบียนและวัดผล', 'ผู้ปฏิบัติงาน หน่วยคลังข้อสอบ'],
+    room: 'ห้องพักครูวิทยาศาสตร์',
+    email: 'pailin@psuwit.ac.th',
+    phone: '-',
+    img: 'pailin.png',
+    color: 'linear-gradient(135deg,#0EA5E9,#0284C7)',
+    initial: 'ไ',
+    education: [
+      { year: 'วิทยาศาสตรบัณฑิต (ฟิสิกส์) วท.บ.', degree: 'มหาวิทยาลัยสงขลนครินทร์', country: 'ไทย' },
+      { year: 'วิศวกรรมศาสตรมหาบัณฑิต (วิศวกรรมอุตสาหการและระบบ) วศ.ม.', degree: 'มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' }
+    ],
+    specialize: ['สาขาฟิสิกส์']
+  },
+  kultida: {
+    prefix: 'คุณครู',
+    name: 'กุลธิดา คชรัตน์',
+    nameEn: 'Kultida Kocharat',
+    position: 'ครูเคมี',
+    dept: ['ครูประจำชั้น ม.6/3','หัวหน้าสายชั้นมัธยมศึกษาปีที่ 6','ผู้ปฏิบัติงานกิจกรรมนักเรียน'],
+    room: 'ห้องพักครูวิทยาศาสตร์',
+    email: 'kultida@psuwit.ac.th',
+    phone: '-',
+    img: 'kultida.png',
+    color: 'linear-gradient(135deg,#10B981,#059669)',
+    initial: 'ก',
+    education: [
+      { year: 'การศึกษาบัณฑิต (วิทยาศาสตร์-เคมี) กศ.บ.', degree: 'มหาวิทยาลัยทักษิณ', country: 'ไทย' },
+      { year: 'วิทยาศาสตรมหาบัณฑิต (เคมีศึกษา) วท.ม.', degree: 'มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' }
+    ],
+    specialize: ['สาขาเคมี']
+  },
+  atchara: {
+    prefix: 'คุณครู',
+    name: 'อัจฉรา ตันติประภาส',
+    nameEn: 'Atchara Tantiprapas',
+    position: 'ครูชีววิทยา',
+    dept: ['ครูประจำชั้น ม.3/1','ผู้ปฏิบัติงาน งานอนามัยโรงเรียน','ผู้ปฏิบัติงาน หน่วยระบบดูแลช่วยเหลือนักเรียนและป้องกันการถูกรังแก'],
+    room: 'ห้องพักครูวิทยาศาสตร์',
+    email: 'atchara@psuwit.ac.th',
+    phone: '-',
+    img: 'atchara.png',
+    color: 'linear-gradient(135deg,#8B5CF6,#7C3AED)',
+    initial: 'อ',
+    education: [
+      { year: 'วิทยาศาสตรบัณฑิต (ชีววิทยา) วท.บ.', degree: 'มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' }
+    ],
+    specialize: ['สาขาชีววิทยา']
+  },
+  aree: {
+    prefix: 'คุณครู',
+    name: 'อารีย์ อภัยรัตน์',
+    nameEn: 'Aree Aphairat',
+    position: 'หัวหน้างานห้องปฏิบัติการวิทยาศาสตร์',
+    dept:  ['ครูประจำชั้น ม.2/2','หัวหน้างาน งานห้องปฏิบัติการวิทยาศาสตร์','ผู้ปฏิบัติงาน งานประกันคุณภาพ'],
+    room: 'ห้องปฏิบัติการเคมี',
+    email: 'aree.a@psuwit.ac.th',
+    phone: '-',
+    img: 'aree.png',
+    color: 'linear-gradient(135deg,#F59E0B,#D97706)',
+    initial: 'อ',
+    education: [
+      { year: 'การศึกษาบัณฑิต (เคมี) กศ.บ.', degree: 'มหาวิทยาลัยทักษิณ', country: 'ไทย' }
+    ],
+    specialize: ['สาขาเคมี']
+  },
+
+  krittanai: {
+    prefix: 'คุณครู',
+    name: 'กฤตนัย พันยาง',
+    nameEn: 'Krittanai Panyang',
+    position: 'หัวหน้าสาขาชีววิทยา',
+    dept: ['ครูประจำชั้น ม.5/7','ผู้ปฏิบัติงาน หน่วยพัฒนางานวิจัย'], 
+    room: 'ห้องพักครูวิทยาศาสตร์',
+    email: 'krittanai@psuwit.ac.th',
+    phone: '-',
+    img: 'krittanai.png',
+    color: 'linear-gradient(135deg,#8B5CF6,#7C3AED)',
+    initial: 'ก',
+    education: [
+      { year: 'วิทยาศาสตรบัณฑิต (เคมี-ชีววิทยา) วท.บ. ', degree: 'มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' }
+    ],
+    specialize: ['สาขาชีววิทยา']
+  },
+  kanokwan: {
+    prefix: 'คุณครู',
+    name: 'กนกวรรณ เขียวเจริญ',
+    nameEn: 'Kanokwan Khiaojaroen',
+    position: 'ครูฟิสิกส์',
+    dept: ['ครูประจำชั้น ม.2/6','รองหัวหน้าสายชั้น ม.2','ผู้ปฏิบัติงาน หน่วยฝึกประสบการณ์อาชีพ'],
+    room: 'ห้องพักครูวิทยาศาสตร์',
+    email: 'kanokwan@psuwit.ac.th',
+    phone: '-',
+    img: 'kanokwan.png',
+    color: 'linear-gradient(135deg,#0EA5E9,#0284C7)',
+    initial: 'ก',
+    education: [
+      { year: 'วิทยาศาสตรบัณฑิต (ฟิสิกส์) วท.บ.', degree: 'มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' }
+    ],
+    specialize: ['สาขาฟิสิกส์']
+  },
+  narawich: {
+    prefix: 'คุณครู',
+    name: 'นราวิชญ์ คำเล็ก',
+    nameEn: 'Narawich Kamlek',
+    position: 'ครูชีววิทยา',
+    dept: ['ครูประจำชั้น ม.6/2'],
+    room: 'ห้องพักครูวิทยาศาสตร์',
+    email: 'narawich@psuwit.ac.th',
+    phone: '-',
+    img: 'narawich.png',
+    color: 'linear-gradient(135deg,#8B5CF6,#7C3AED)',
+    initial: 'น',
+    education: [
+      { year: 'ครุศาสตรบัณฑิต (ชีววิทยา) ค.บ.', degree: '(เกียรตินิยมอันดับ 1) จุฬาลงกรณ์มหาวิทยาลัย', country: 'ไทย' }
+    ],
+    specialize: ['สาขาชีววิทยา']
+  },
+  chamaiporn: {
+    prefix: 'คุณครู',
+    name: 'ชไมภรณ์ เฉลิมวรรณ',
+    nameEn: 'Chamaiporn Chalermwan',
+    position: 'ครูเคมี',
+    dept: ['ครูประจำชั้น ม.5/1','หัวหน้างานหลักสูตร ระดับมัธยมศึกษาตอนต้น','กรรมการโครงการนวัตกรรมดิจิทัล'],
+    room: ' - ',
+    email: 'chamaiporn@psuwit.ac.th',
+    phone: '-',
+    img: 'chamaiporn.png',
+    color: 'linear-gradient(135deg,#10B981,#059669)',
+    initial: 'ช',
+    education: [
+      { year: 'วิทยาศาสตรบัณฑิต (เคมี) วท.บ.', degree: 'มหาวิทยาลัยทักษิณ', country: 'ไทย' },
+      { year: 'วิทยาศาสตรมหาบัณฑิต (เคมี) วท.ม.', degree: 'มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' }
+    ],
+    specialize: ['สาขาเคมี']
+  },
+  jirayu: {
+    prefix: 'คุณครู',
+    name: 'จิรายุ แก้วสม',
+    nameEn: 'Jirayu Kaewsom',
+    position: 'ครูฟิสิกส์',
+    dept: ['ครูประจำชั้น ม.3/3'],
+    room: 'ห้องพักครูวิทยาศาสตร์',
+    email: 'jirayu@psuwit.ac.th',
+    phone: '-',
+    img: 'jirayu.png',
+    color: 'linear-gradient(135deg,#0EA5E9,#0284C7)',
+    initial: 'จ',
+    education: [
+      { year: 'วิทยาศาสตรบัณฑิต (ฟิสิกส์ศึกษาศาสตร์) วท.บ.', degree: 'มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' }
+    ],
+    specialize: ['สาขาฟิสิกส์']
+  },
+  preeyaporn: {
+    prefix: 'คุณครู',
+    name: 'ปรียาภรณ์ เนื้อนุ้ย',
+    nameEn: 'Preeyaporn Nueanui',
+    position: 'ครูฟิสิกส์',
+    dept: ['ครูประจำชั้น ม.2/7','ผู้ปฏิบัติงาน งานทะเบียนและวัดผล','ผู้ปฏิบัติงาน หน่วยคลังข้อสอบ','ผู้ปฏิบัติงาน หลักสูตรลูกเสือชั้นพิเศษ ระดับชั้นมัธยมศึกษาปีที่ 2'],
+    room: 'ห้องพักครูวิทยาศาสตร์',
+    email: 'preeyaporn@psuwit.ac.th',
+    phone: '-',
+    img: 'preeyaporn.png',
+    color: 'linear-gradient(135deg,#0EA5E9,#0284C7)',
+    initial: 'ป',
+    education: [
+      { year: 'วิทยาศาสตรบัณฑิต (ฟิสิดส์ศึกษาศาตร์) วท.บ.', degree: '(เกียรตินิยมอันดับ 1) มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' },
+    ],
+    specialize: ['สาขาฟิสิกส์']
+  },
+  paichittra: {
+    prefix: 'คุณครู',
+    name: 'ไพจิตรา อเปสริยาโย',
+    nameEn: 'Paichittra Apesariyayo',
+    position: 'ครูเคมี',
+    dept: ['ครูประจำชั้น ม.2/3','ผู้ปฏิบัติงานหลักสูตรและพัฒนาการเรียนรู้'],
+    room: 'ห้องพักครูวิทยาศาสตร์ ชั้น 4',
+    email: 'paichittra@psuwit.ac.th',
+    phone: '-',
+    img: 'paichittra.png',
+    color: 'linear-gradient(135deg,#10B981,#059669)',
+    initial: 'ไ',
+    education: [
+      { year: 'วิทยาศาสตรบัณฑิต (เคมี) วท.บ.', degree: 'มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' },
+      { year: 'วิทยาศษสตรมหาบัณฑิต (เคมีเชิงฟิสิกส์) วท.ม.', degree: 'มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' }
+    ],
+    specialize: ['สาขาเคมี']
+  },
+  weerapong: {
+    prefix: 'คุณครู',
+    name: 'วีรพงศ์ รักษ์แก้ว',
+    nameEn: 'Weerapong Rakkaew',
+    position: 'ครูชีววิทยา',
+    dept: ['ครูประจำชั้น ม.4/3','รองหัวหน้าสายชั้นมัธยมศึกษาปีที่ 4','รองหัวหน้างาน งานส่งเสริมวิชาการ วิจัยและพัฒนา','หัวหน้าหน่วยส่งเสริมและพัฒนาอัจฉริยภาพของผู้เรียน'],
+    room: 'สำนักงานผู้อำนวยการ',
+    email: 'weerapong@psuwit.ac.th',
+    phone: '-',
+    img: 'weerapong.png',
+    color: 'linear-gradient(135deg,#8B5CF6,#7C3AED)',
+    initial: 'ว',
+    education: [
+      { year: 'การศึกษาบัณฑิต (ชีววิทยา) กศ.บ.', degree: '(เกียรตินิยมอันดับ 1) มหาวิทยาลัยทักษิณ', country: 'ไทย' }
+    ],
+    specialize: ['สาขาชีววิทยา']
+  },
+  wirote: {
+    prefix: 'คุณครู',
+    name: 'วิโรจน์ ประณิธานชัย',
+    nameEn: 'Wirote Pranitanchai',
+    position: 'หัวหน้าสาขาเคมี',
+    dept: ['ผู้ปฏิบัติงาน หน่วยอาสาจราจรและความปลอดภัยบนท้องถนน', 'ผู้ปฏิบัติงาน วิศวกรรมโครงสร้างและสิ่งแวดล้อม'], 
+    room: 'ห้องพักครูวิทยาศาสตร์',
+    email: 'wirote@psuwit.ac.th',
+    phone: '-',
+    img: 'wirote.png',
+    color: 'linear-gradient(135deg,#10B981,#059669)',
+    initial: 'ว',
+    education: [
+      { year: 'วิทยาศาสตรบัณฑิต (เคมี) วท.บ.', degree: '[เกียรตินิยมอันดับ 1] มหาวิทยาลัยราชภัฏสุราษฎร์ธานี', country: 'ไทย' },
+      { year: 'วิทยาศาสตรมหาบัณฑิต (เคมีอินทรีย์) วท.ม. ', degree: 'มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' }
+    ],
+    specialize: ['สาขาเคมี']
+  },
+  saharat: {
+    prefix: 'คุณครู',
+    name: 'สหรัฐ อินสุวรรณ์',
+    nameEn: 'Saharat Insuwan',
+    position: 'ครูฟิสิกส์',
+    dept: ['ครูประจำชั้น ม.3/6','ผู้ปฏิบัติ หน่วยปฏิบัติการ STEM','ผู้ปฏิบัติงาน หลักสูตรลูกเสือชั้นพิเศษ ระดับชั้นมัธยมศึกษาปีที่ 2'],
+    room: 'ห้องพักครูวิทยาศาสตร์',
+    email: 'saharat@psuwit.ac.th',
+    phone: '-',
+    img: 'saharat.png',
+    color: 'linear-gradient(135deg,#0EA5E9,#0284C7)',
+    initial: 'ส',
+    education: [
+      { year: 'การศึกษาบัณฑิต (วิทยาศาสตร-ฟิสิกส์) กศ.บ.', degree: 'มหาวิทยาลัยทักษิณ', country: 'ไทย' }
+    ],
+    specialize: ['สาขาฟิสิกส์']
+  },
+  sudarat: {
+    prefix: 'คุณครู',
+    name: 'สุดารัตน์ ลักษณะ',
+    nameEn: 'Sudarat Laksana',
+    position: 'ครูเคมี',
+    dept: ['ครูประจำชั้น ม.1/4','ผู้ปฏิบัติงาน งานกิจกรรมนักเรียน','ผู้ปฏิบัติงาน หน่วยส่งเสริมและพัฒนาอัจริยภาพของผู้เรียน'],
+    room: 'ห้องพักครูวิทยาศาสตร์',
+    email: 'sudarat@psuwit.ac.th',
+    phone: '-',
+    img: 'sudarat.png',
+    color: 'linear-gradient(135deg,#10B981,#059669)',
+    initial: 'ส',
+    education: [
+      { year: 'วิทยาศาสตรบัณฑิต (เคมี) วท.บ.', degree: 'มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' }
+    ],
+    specialize: ['สาขาเคมี']
+  },
+  apinya: {
+    prefix: 'คุณครู',
+    name: 'อภิญญา บุญคุ้ม',
+    nameEn: 'Apinya Boonkhum',
+    position: 'ครูชีววิทยา',
+    dept: ['ครูประจำชั้น ม.5/6','หัวหน้างานหลักสูตรและพัฒนาการเรียนรู้','รองประธาน โครงการจีนศึกษาฯ'],
+    room: 'ห้องวิชาการ',
+    email: 'apinya@psuwit.ac.th',
+    phone: '-',
+    img: 'apinya.png',
+    color: 'linear-gradient(135deg,#8B5CF6,#7C3AED)',
+    initial: 'อ',
+    education: [
+      { year: 'วิทยาศาสตรบัณฑิต (ชีววิทยา) วท.บ.', degree: 'มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' },
+      { year: 'วิทยาศาสตรมหาบัณฑิต (พฤกษศาสตร์) วท.ม.', degree: 'มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' }
+    ],
+    specialize: ['สาขาชีววิทยา']
+  },
+  athipong: {
+    prefix: 'คุณครู',
+    name: 'อธิพงศ์ หนูนุ่น',
+    nameEn: 'Athipong Nunun',
+    position: 'ครูชีววิทยา',
+    dept: ['ครูประจำชั้น ม.6/7','ผู้ปฏิบัติงาน งานศูนย์ทรัพยากรการเรียนรู้','ผู้ปฏิบัติงาน หลักสูตรลูกเสือหลวง ระดับชั้นมัธยมศึกษาปีที่ 3'],
+    room: 'ศูนย์ทรัพยากรการเรียนรู้',
+    email: 'athipong@psuwit.ac.th',
+    phone: '-',
+    img: 'athipong.png',
+    color: 'linear-gradient(135deg,#8B5CF6,#7C3AED)',
+    initial: 'อ',
+    education: [
+      { year: 'วิทยาศาสตรบัณฑิต (ชีววิทยา) วท.บ.', degree: 'มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' }
+    ],
+    specialize: ['สาขาชีววิทยา']
+  },
+  adinan: {
+    prefix: 'คุณครู',
+    name: 'อดินันท์ เจ๊ะซู',
+    nameEn: 'Adinan Jaesu',
+    position: 'ครูฟิสิกส์',
+    dept: ['รองหัวหน้าฝ่ายวิชาการ','หัวหน้างาน งานส่งเสริมวิชาการ วิจัยและพัฒนา','หัวหน้าหน่วยปฏิบัติการ STEM','กรรมการและเลขานุการ โครงการจัดการเรียนการสอนห้องเรียนนวัตกรรมดิจิทัล'],
+    room: 'ห้องปฏิบัติการ STEM',
+    email: 'adinan@psuwit.ac.th',
+    phone: '-',
+    img: 'adinan.png',
+    color: 'linear-gradient(135deg,#0EA5E9,#0284C7)',
+    initial: 'อ',
+    education: [
+      { year: 'วิทยาศาตรบัณฑิต (ศึกษาศาสตร์) สาขาวิชาเอกฟิสิกส์ วิชาโทคณิตศาสตร์ วท.บ.', degree: '(เกียรตินิยมอันดับ 2) มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' },
+      { year: 'วิทยาศาสตรมหาบัณฑิต (ฟิสิกส์) วท.ม.', degree: 'มหาวิทยาลัยขอนแก่น', country: 'ไทย' }
+    ],
+    specialize: ['สาขาฟิสิกส์']
+  },
+  alisa: {
+    prefix: 'คุณครู',
+    name: 'อลิษา ทวีลาภ',
+    nameEn: 'Alisa Thawilap',
+    position: 'ครูฟิสิกส์',
+    dept: ['ครูประจำชั้น ม.3/3','ผู้ปฏิบัติงานพัฒนาบุคลิกภาพนักเรียน'],
+    room: 'ห้องพักครูวิทยาศาสตร์',
+    email: 'alisa@psuwit.ac.th',
+    phone: '-',
+    img: 'alisa.png',
+    color: 'linear-gradient(135deg,#0EA5E9,#0284C7)',
+    initial: 'อ',
+    education: [
+      { year: 'วิทยาศาสตรบัณฑิต (ฟิสิกส์ศึกษาศาสตร์) วท.บ.', degree: 'มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' },
+      { year: 'วิทยาศาสตรมหาบัณฑิต (ฟิสิกส์ประยุกต์) วท.ม.', degree: 'มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' }
+    ],
+    specialize: ['สาขาฟิสิกส์']
+  },
+  navaporn: {
+    prefix: 'คุณครู',
+    name: 'นวพร พุทธกูล',
+    nameEn: 'Navaporn Phutthakun',
+    position: 'เจ้าหน้าที่ห้องปฏิบัติการวิทยาศาสตร์ทั่วไป',
+    dept: ['ครูประจำชั้น ม.1/7','ผู้ปฏิบัติงาน งานวิศวกรรมโครงสร้างและสิ่งแวดล้อม','ผู้ปฏิบัติงาน งานห้องปฏิบัติการวิทยาศาสตร์'],
+    room: 'ห้องปฏิบัติการวิทยาศาสตร์',
+    email: 'navaporn@psuwit.ac.th',
+    phone: '-',
+    img: 'navaporn.png',
+    color: 'linear-gradient(135deg,#F59E0B,#D97706)',
+    initial: 'น',
+    education: [
+      { year: 'วิทยาศาตรบัณฑิต (วิทยาศาตร์ทั่วไป) วท.บ.', degree: 'มหาวิทยาลัยสงขลานครินทร์', country: 'ไทย' }
+    ],
+    specialize: ['วิทยาศาตร์ทั่วไป']
+  },
+  surasak: {
+    prefix: 'คุณครู',
+    name: 'สุรศักดิ์ จันทร์โชติ',
+    nameEn: 'Surasak Janchoti',
+    position: 'เจ้าหน้าที่ห้องปฏิบัติการฟิสิกส์',
+    dept: ['ครูประจำชั้น ม.6/3','ผู้ปฏิบัติงาน งานส่งเสริมวิชาการ วิจัยและพัฒนา','ผู้ปฏิบัติงาน หน่วยปฏิบัติการ STEM','ผู้ปฏิบัติงาน งานซ่อมบำรุง','ผู้ปฏิบัติงาน งานห้องปฏิบัติการวิทยาศาสตร์'],
+    room: 'ห้องปฏิบัติการฟิสิกส์',
+    email: 'surasak@psuwit.ac.th',
+    phone: '-',
+    img: 'surasak.png',
+    color: 'linear-gradient(135deg,#F59E0B,#D97706)',
+    initial: 'ส',
+    education: [
+      { year: 'วิทยาศาสตรบัณฑิต (ฟิสิกส์) วท.บ.', degree: 'มหาวิทยาลัยทักษิณ', country: 'ไทย' }
+
+    ],
+    specialize: ['สาขาฟิสิกส์']
+  },
+  patcharin: {
+    prefix: 'คุณครู',
+    name: 'พัชรินทร์ สกุลจีน',
+    nameEn: 'Patcharin Sakuljeen',
+    position: 'เจ้าหน้าที่ห้องปฏิบัติการชีววิทยา',
+    dept: ['ครูประจำชั้น ม.2/4','ผู้ปฏิบัติงาน งานอนามัยโรงเรียน','ผู้ปฏิบัติงาน งานห้องปฏิบัติการวิทยาศาสตร์'],
+    room: 'ห้องปฏิบัติการชีววิทยา',
+    email: 'patcharin@psuwit.ac.th',
+    phone: '-',
+    img: 'patcharin.png',
+    color: 'linear-gradient(135deg,#F59E0B,#D97706)',
+    initial: 'พ',
+    education: [
+      { year: 'วิทยาศาสตรบัณฑิต (ชีววิทยา) วท.บ.', degree: 'มหาวิทยาลัยทักษิณ', country: 'ไทย' }
+    ],
+    specialize: ['สาขาชีววิทยา']
+  }
+};
+
+// ═══════════════════════════════════════
+//  SHOW TEACHER PROFILE
+// ═══════════════════════════════════════
+function showTeacherProfile(id) {
+  const t = teachers[id];
+  if (!t) return;
+
+  // 1. จัดการประวัติการศึกษา (วนลูปตามจำนวนข้อมูลที่มี)
+  const eduRows = t.education.map(e => `
+    <div class="edu-item">
+      <div class="edu-year">${e.year || '–'}</div>
+      <div class="edu-degree">${e.degree}</div>
+      <div class="edu-country"><i class="bi bi-globe2"></i> ${e.country}</div>
+    </div>
+  `).join('');
+
+  // 2. จัดการสาขาเชี่ยวชาญ (วนลูปตามจำนวนข้อมูลที่มี)
+  const specRows = t.specialize.map(s => `
+    <div class="specialize-item">
+      <div class="specialize-dot"></div>
+      <div class="specialize-text">${s}</div>
+    </div>
+  `).join('');
+
+  // 3. จัดการ สาขา/หน่วยงาน (dept) ให้รองรับทั้งข้อความเดี่ยวๆ และ Array
+  const deptArray = Array.isArray(t.dept) ? t.dept : [t.dept];
+  const headerDept = deptArray.join(' / '); // แสดงด้านบนใต้รูปโปรไฟล์
+  const infoDeptRows = deptArray.map(d => `<div style="margin-bottom:4px;">• ${d}</div>`).join(''); // แสดงในกล่องข้อมูลติดต่อ
+
+  const html = `
+    <div class="profile-hero">
+      <div class="profile-hero-inner">
+        <div class="profile-photo-wrap">
+          <img src="${t.img}" alt="${t.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div style="display:none;width:100%;height:100%;background:${t.color};align-items:center;justify-content:center;font-size:72px;font-weight:800;color:white;">${t.initial}</div>
+        </div>
+        <div class="profile-info">
+          <div class="profile-prefix">${t.prefix}</div>
+          <div class="profile-name">${t.name}</div>
+          <div class="profile-position">${t.position}</div>
+          <div class="profile-dept">${t.specialize}</div>
+          <div class="profile-tags">
+            <span class="profile-tag"><i class="bi bi-geo-alt"></i> ${t.room}</span>
+            <span class="profile-tag"><i class="bi bi-envelope"></i> ${t.email}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-body">
+      <div onclick="showPage('faculty')" class="profile-back-btn">
+        <i class="bi bi-arrow-left"></i> กลับหน้าบุคลากร
+      </div>
+
+      <div class="profile-grid">
+        <div>
+          <div class="profile-section-title">ข้อมูลติดต่อ</div>
+          <div class="profile-info-card">
+            <div class="profile-info-row">
+              <div class="profile-info-icon"><i class="bi bi-geo-alt-fill"></i></div>
+              <div>
+                <div class="profile-info-label">ห้องพัก / ที่ทำงาน</div>
+                <div class="profile-info-val">${t.room}</div>
+              </div>
+            </div>
+            <div class="profile-info-row">
+              <div class="profile-info-icon"><i class="bi bi-envelope-fill"></i></div>
+              <div>
+                <div class="profile-info-label">อีเมล</div>
+                <div class="profile-info-val"><a href="mailto:${t.email}" style="color:var(--sky);text-decoration:none;">${t.email}</a></div>
+              </div>
+            </div>
+            <div class="profile-info-row">
+              <div class="profile-info-icon"><i class="bi bi-telephone-fill"></i></div>
+              <div>
+                <div class="profile-info-label">โทรศัพท์ภายใน</div>
+                <div class="profile-info-val">${t.phone}</div>
+              </div>
+            </div>
+            <div class="profile-info-row">
+              <div class="profile-info-icon"><i class="bi bi-diagram-3-fill"></i></div>
+              <div>
+                <div class="profile-info-label">หน่วยงาน</div>
+                <div class="profile-info-val" style="line-height:1.6;">${infoDeptRows}</div>
+              </div>
+            </div>
+          </div>
+
+          <br>
+          <div class="profile-section-title">สาขาเชี่ยวชาญ</div>
+          <div class="profile-info-card">
+            ${specRows}
+          </div>
+        </div>
+
+        <div>
+          <div class="profile-section-title">ประวัติการศึกษา</div>
+          <div class="profile-info-card">
+            ${eduRows}
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('profileContent').innerHTML = html;
+  showPage('teacher-profile');
+}
+
+// ═══════════════════════════════════════
+//  PAGE ROUTER
+// ═══════════════════════════════════════
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
+  const navEl = document.getElementById('nav-' + name);
+  if (navEl) navEl.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  return false;
+}
+
+// ─── MOBILE MENU ───
+function toggleMobile() { document.getElementById('mobileMenu').classList.toggle('open'); }
+function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+// ─── TEACHER FILTER ───
+function filterTeachers(name, dept) {
+  const allCards = document.querySelectorAll('#teacherGrid .teacher-card, #teacherGrid2 .teacher-card, #teacherGrid3 .teacher-card');
+  allCards.forEach(c => {
+    const n = (c.dataset.name || '').toLowerCase();
+    const d = c.dataset.dept || '';
+    const nameOk = !name || n.includes(name.toLowerCase());
+    const deptOk = !dept || d === dept;
+    c.style.display = (nameOk && deptOk) ? '' : 'none';
+  });
+}
+
+// ─── COUNTER ANIMATION ───
+function animateCounters() {
+  document.querySelectorAll('[data-target]').forEach(el => {
+    const target = +el.dataset.target;
+    let current = 0;
+    const step = Math.ceil(target / 50);
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.textContent = current + (target >= 100 ? '+' : '');
+      if (current >= target) clearInterval(timer);
+    }, 30);
+  });
+}
+
+// ─── HERO CANVAS ───
+const canvas = document.getElementById('heroCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let hexAngle = 0;
+
+function resizeCanvas() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+    this.r = Math.random() * 1.5 + 0.5; this.vx = (Math.random() - 0.5) * 0.3; this.vy = (Math.random() - 0.5) * 0.3;
+    this.alpha = Math.random() * 0.6 + 0.1; this.color = Math.random() > 0.5 ? '#0EA5E9' : '#10B981';
+  }
+  update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset(); }
+  draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI*2); ctx.fillStyle = this.color; ctx.globalAlpha = this.alpha; ctx.fill(); ctx.globalAlpha = 1; }
+}
+
+function drawHexagon(x, y, size, color, alpha) {
+  ctx.beginPath();
+  for (let i = 0; i < 6; i++) { const angle=(Math.PI/3)*i-Math.PI/6; i===0?ctx.moveTo(x+size*Math.cos(angle),y+size*Math.sin(angle)):ctx.lineTo(x+size*Math.cos(angle),y+size*Math.sin(angle)); }
+  ctx.closePath(); ctx.strokeStyle=color; ctx.globalAlpha=alpha; ctx.lineWidth=1; ctx.stroke(); ctx.globalAlpha=1;
+}
+
+function drawConnections() {
+  for (let i=0;i<particles.length;i++) for(let j=i+1;j<particles.length;j++) {
+    const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y, d=Math.sqrt(dx*dx+dy*dy);
+    if(d<80){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle='#0EA5E9';ctx.globalAlpha=(1-d/80)*0.15;ctx.lineWidth=0.5;ctx.stroke();ctx.globalAlpha=1;}
+  }
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  hexAngle += 0.005;
+  const hexes=[[80,80,40],[canvas.width-80,100,30],[100,canvas.height-80,35],[canvas.width-100,canvas.height-100,45]];
+  hexes.forEach(([x,y,s])=>drawHexagon(x,y,s,'#0EA5E9',0.07));
+  particles.forEach(p=>{p.update();p.draw();});
+  drawConnections();
+  requestAnimationFrame(animate);
+}
+
+window.addEventListener('resize', resizeCanvas);
+window.addEventListener('load', () => {
+  resizeCanvas();
+  for(let i=0;i<60;i++) particles.push(new Particle());
+  animate();
+  animateCounters();
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('fade-in'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.card,.teacher-card,.lab-card,.vm-card,.award-card,.contact-block').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
